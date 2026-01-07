@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Appointment - Beauty Salon</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- NAVBAR START -->
+<nav class="navbar">
+    <div class="logo">Beauty Salon</div>
+    <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="prices.html">Price List</a></li>
+        <li><a href="appointment.html">Appointment</a></li>
+        <li><a href="about.html">About Us</a></li>
+    </ul>
+</nav>
+<!-- NAVBAR END -->
+
+
+<h2 class="form-title"; style=" color:#bf3b0b";> Book an Appointment   </h2>
+
+
+<!-- Appointment Form Start -->
+
+<form action="https://formspree.io/f/mqeawlan" method="POST">
+  <label for="name">Full Name:</label>
+  <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" placeholder="Your Email" required>
+
+  <label for="phone">Phone Number:</label>
+  <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required>
+
+  <label for="service">Select Service:</label>
+  <select id="service" name="service" required>
+    <option value="">--Choose Service--</option>
+    <option value="Haircut">Haircut</option>
+    <option value="Facial">Facial</option>
+    <option value="Manicure">Manicure</option>
+    <option value="Pedicure">Pedicure</option>
+  </select>
+
+  <label for="date">Preferred Date:</label>
+  <input type="date" id="date" name="date" required>
+
+  <label for="time">Preferred Time:</label>
+  <input type="time" id="time" name="time" required>
+
+  <input type="submit" value="Book Appointment">
+</form>
+<!-- Appointment Form End -->
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const bookedDates = ["2026-01-10", "2026-01-12"];
+    const dateInput = document.getElementById('date');
+
+    // Prevent past dates
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.setAttribute('min', today);
+
+    // Block booked dates
+    dateInput.addEventListener('input', function() {
+        if (bookedDates.includes(this.value)) {
+            alert("Sorry, this date is already booked. Please select another date.");
+            this.value = "";
+        }
+        
+    });
+    
+});
+</script>
+
+
+
+
+</body>
+</html>
+
